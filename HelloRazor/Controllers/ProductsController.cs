@@ -28,10 +28,13 @@ namespace HelloRazor.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("Rate")]
+        public ActionResult Get(
+            [FromQuery]string productId,
+            [FromQuery]int Rating)
         {
-            return "value";
+            ProductService.AddRating(productId, Rating);
+            return Ok();
         }
 
         // POST api/values
